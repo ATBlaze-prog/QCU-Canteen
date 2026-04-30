@@ -1,0 +1,422 @@
+/* ============================================================
+   style.css — QCU Canteen Custom Styles
+   ============================================================ */
+
+/* ----- Variables ----- */
+:root {
+  --qcu-red:    #8b1a1a;
+  --qcu-dark:   #0f0f0f;
+  --qcu-cream:  #f8f5f0;
+  --qcu-border: #dee2e6;
+}
+
+/* ----- Global ----- */
+html, body {
+  height: 100%;
+}
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--qcu-cream);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  animation: pageFadeIn 0.6s ease-out;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----- Navbar ----- */
+.navbar {
+  background-color: var(--qcu-dark) !important;
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  color: #fff !important;
+}
+.navbar-brand .brand-badge {
+  background: var(--qcu-red);
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  margin-right: 6px;
+}
+.navbar .nav-link {
+  color: rgba(255,255,255,0.75) !important;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: color .15s;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #fff !important;
+}
+.nav-signup {
+  background: var(--qcu-red) !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  padding: 4px 14px !important;
+}
+.nav-signup:hover {
+  background: #6e1414 !important;
+}
+
+/* ----- Hero ----- */
+.hero-section {
+  background-image: url('kyusi.png') !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  display: none !important;
+  content: none !important;
+}
+.hero-section .hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- Page Header Banner ----- */
+.page-banner {
+  background: var(--qcu-dark);
+  padding: 3.5rem 0;
+  color: #fff;
+}
+.page-banner h1 {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* ----- Feature Cards ----- */
+.feature-card {
+  border: 1.5px solid var(--qcu-border);
+  border-radius: 0;
+  background: #fff;
+  transition: border-color .2s, transform .2s;
+}
+.feature-card:hover {
+  border-color: var(--qcu-dark);
+  transform: translateY(-3px);
+}
+
+/* ----- Dish Cards ----- */
+.dish-card {
+  border: 1.5px solid var(--qcu-border);
+  border-radius: 0;
+  background: #fff;
+  transition: border-color .2s;
+  height: 100%;
+}
+.dish-card:hover { border-color: var(--qcu-dark); }
+
+/* Fixed square image box — every dish image is identical in size */
+.dish-card .dish-image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;       /* perfect square */
+  overflow: hidden;
+  background: #f0ece8;        /* fallback bg when no image */
+  flex-shrink: 0;
+}
+.dish-card .dish-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* center-crop fill */
+  object-position: center;
+  display: block;
+}
+/* Placeholder shown when no image uploaded */
+.dish-card .dish-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: #ccc;
+  background: #f8f5f0;
+}
+
+.dish-card .card-body { display: flex; flex-direction: column; padding: 1rem; }
+.dish-card .dish-price { font-size: 1.2rem; font-weight: 700; }
+.dish-card .btn-cart   { margin-top: auto; }
+
+/* Admin modal image preview — same square ratio */
+.dish-image-preview {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-top: 0.75rem;
+  background: #f0ece8;
+}
+
+/* Admin dishes table thumbnail */
+.dish-thumb {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--qcu-border);
+}
+.dish-thumb-placeholder {
+  width: 52px;
+  height: 52px;
+  background: #f0ece8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 1px solid var(--qcu-border);
+}
+
+/* ----- Store tabs ----- */
+.store-tabs .nav-link {
+  border-radius: 0;
+  border: 1.5px solid var(--qcu-border);
+  color: var(--qcu-dark);
+  font-weight: 500;
+  font-size: .875rem;
+  margin-right: 4px;
+  transition: .15s;
+}
+.store-tabs .nav-link:hover  { background: #f0ece8; }
+.store-tabs .nav-link.active {
+  background: var(--qcu-dark);
+  border-color: var(--qcu-dark);
+  color: #fff;
+}
+
+/* ----- Buttons ----- */
+.btn-dark-qcu {
+  background-color: var(--qcu-dark);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  letter-spacing: .5px;
+  transition: background .2s;
+}
+.btn-dark-qcu:hover { background-color: var(--qcu-red); color: #fff; }
+
+.btn-outline-dark-qcu {
+  background: #fff;
+  color: var(--qcu-dark);
+  border: 1.5px solid var(--qcu-dark);
+  border-radius: 0;
+  font-weight: 600;
+  transition: .2s;
+}
+.btn-outline-dark-qcu:hover { background: var(--qcu-dark); color: #fff; }
+
+/* ----- Auth cards ----- */
+.auth-card {
+  border: 1.5px solid var(--qcu-border);
+  border-radius: 0;
+  background: #fff;
+  animation: slideIn 0.8s ease-out 0.2s both;
+}
+.auth-card .card-title { font-weight: 800; font-size: 1.6rem; }
+.auth-card .title-bar  {
+  width: 50px; height: 3px;
+  background: var(--qcu-dark);
+  margin: .5rem auto 1.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ----- About stores ----- */
+.store-item {
+  border: 1.5px solid var(--qcu-border);
+  background: #fff;
+  padding: 1.25rem;
+  transition: border-color .2s;
+}
+.store-item:hover { border-color: var(--qcu-dark); }
+.store-num-circle {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--qcu-dark);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ----- Admin stats ----- */
+.stat-card {
+  border: 1.5px solid var(--qcu-border);
+  border-radius: 0;
+  background: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.stat-card .stat-num {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.stat-card .stat-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6c757d;
+  margin-top: .25rem;
+}
+
+/* ----- Admin tabs ----- */
+.admin-tabs .nav-link {
+  border-radius: 0;
+  color: var(--qcu-dark);
+  font-weight: 500;
+  border: 1.5px solid transparent;
+  border-bottom: none;
+}
+.admin-tabs .nav-link.active {
+  background: var(--qcu-dark);
+  color: #fff;
+  border-color: var(--qcu-dark);
+}
+
+/* ----- Tables ----- */
+.qcu-table thead th {
+  background: var(--qcu-dark);
+  color: #fff;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border: none;
+  white-space: nowrap;
+}
+.qcu-table tbody tr:hover td { background: #f8f5f0; }
+
+/* ----- Status badges ----- */
+.badge-pending   { background: #fff3cd; color: #856404; }
+.badge-preparing { background: #cce5ff; color: #004085; }
+.badge-ready     { background: #d4edda; color: #155724; }
+.badge-completed { background: #e2e3e5; color: #383d41; }
+
+/* ----- Item tags ----- */
+.item-tag {
+  display: inline-block;
+  background: var(--qcu-dark);
+  color: #fff;
+  font-size: .7rem;
+  padding: 2px 7px;
+  margin: 2px;
+  font-weight: 500;
+}
+
+/* ----- Cart offcanvas ----- */
+.offcanvas-header { background: var(--qcu-dark); color: #fff; }
+.offcanvas-header .btn-close { filter: invert(1); }
+.cart-item-row { border-bottom: 1px solid #eee; padding: .85rem 0; }
+
+/* ----- Dividers / headings ----- */
+.title-divider {
+  width: 60px; height: 3px;
+  background: var(--qcu-dark);
+  margin: .5rem auto 2rem;
+}
+.section-heading { font-weight: 800; font-size: 1.9rem; }
+
+/* ----- Footer ----- */
+footer {
+  background: var(--qcu-dark);
+  color: rgba(255,255,255,.7);
+  font-size: .875rem;
+}
+footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+footer a:hover { color: #fff; }
+
+/* ----- Profile page ----- */
+.profile-avatar-wrap { position: relative; display: inline-block; cursor: pointer; }
+.profile-avatar-wrap img,
+.profile-avatar-large {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--qcu-border);
+}
+.profile-avatar-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--qcu-red);
+}
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.profile-avatar-wrap:hover .avatar-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.avatar-edit-btn {
+  position: absolute; bottom: 4px; right: 4px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--qcu-dark); color: #fff;
+  border: 2px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: .75rem;
+  transition: background .2s;
+}
+.avatar-edit-btn:hover { background: var(--qcu-red); }
+
+.order-history-card {
+  border: 1.5px solid var(--qcu-border);
+  border-radius: 0; background: #fff;
+  transition: border-color .2s;
+}
+.order-history-card:hover { border-color: var(--qcu-dark); }
